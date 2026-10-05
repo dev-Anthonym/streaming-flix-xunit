@@ -1,0 +1,15 @@
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\bin\Debug\net10.0\StreamingFlix.App.exe
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\bin\Debug\net10.0\StreamingFlix.App.deps.json
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\bin\Debug\net10.0\StreamingFlix.App.runtimeconfig.json
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\bin\Debug\net10.0\StreamingFlix.App.dll
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\bin\Debug\net10.0\StreamingFlix.App.pdb
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.AssemblyInfoInputs.cache
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.AssemblyInfo.cs
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.csproj.CoreCompileInputs.cache
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.sourcelink.json
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.dll
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\refint\StreamingFlix.App.dll
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.pdb
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\StreamingFlix.App.genruntimeconfig.cache
+C:\Users\4251923674\Desktop\StreamingFlix\StreamingFlix.App\obj\Debug\net10.0\ref\StreamingFlix.App.dll

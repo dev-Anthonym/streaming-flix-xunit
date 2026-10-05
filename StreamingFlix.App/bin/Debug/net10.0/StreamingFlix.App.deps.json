@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "StreamingFlix.App/1.0.0": {
+        "runtime": {
+          "StreamingFlix.App.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StreamingFlix.App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
