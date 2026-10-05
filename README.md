@@ -21,7 +21,7 @@ As principais funcionalidades implementadas são:
 
 ## 🛠️ Tecnologias utilizadas
 
-- **C#**
+- **JAVA**
 - **.NET 10**
 - **xUnit**
 - **.NET CLI**
