@@ -2,7 +2,7 @@
 
 Projeto desenvolvido em **C# com .NET 10** para implementação e validação de regras de negócio de uma plataforma de streaming.
 
-O projeto foi desenvolvido como atividade acadêmica da disciplina de **Garantia da Qualidade de Software / Gestão e Qualidade de Software**, com foco na implementação de regras de negócio e na criação de testes unitários utilizando **xUnit**.
+O projeto foi desenvolvido como atividade acadêmica da disciplina de **Garantia da Qualidade de Software**, com foco na implementação de regras de negócio e na criação de testes unitários utilizando **xUnit**.
 
 ---
 
