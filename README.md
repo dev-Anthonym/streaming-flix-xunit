@@ -1,6 +1,6 @@
 # 🎬 StreamingFlix
 
-Aplicação desenvolvida em **C# com .NET 10**, criada para representar regras de negócio de uma plataforma de streaming. O projeto também possui uma suíte de **testes unitários utilizando xUnit**, com testes parametrizados para validar as principais regras da aplicação.
+Aplicação desenvolvida em **JAVA com .NET 10**, criada para representar regras de negócio de uma plataforma de streaming. O projeto também possui uma suíte de **testes unitários utilizando xUnit**, com testes parametrizados para validar as principais regras da aplicação.
 
 O projeto foi desenvolvido como atividade da disciplina de **Garantia da Qualidade de Software / Gestão e Qualidade de Software**.
 
