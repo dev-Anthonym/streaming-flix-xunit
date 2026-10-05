@@ -1,32 +1,39 @@
 # 🎬 StreamingFlix
 
-Projeto desenvolvido em **Java** para representar regras de negócio de uma plataforma de streaming, com foco em **qualidade de software e testes unitários**.
+Projeto desenvolvido em **C# com .NET 10** para implementação e validação de regras de negócio de uma plataforma de streaming.
 
-O projeto foi desenvolvido como atividade da disciplina de **Garantia da Qualidade de Software / Gestão e Qualidade de Software**.
-
-A aplicação implementa regras relacionadas à classificação dos planos, cálculo de mensalidade com desconto e controle de acesso a conteúdo adulto.
+O projeto foi desenvolvido como atividade acadêmica da disciplina de **Garantia da Qualidade de Software / Gestão e Qualidade de Software**, com foco na implementação de regras de negócio e na criação de testes unitários utilizando **xUnit**.
 
 ---
 
 ## 📋 Sobre o projeto
 
-O **StreamingFlix** possui três principais regras de negócio:
+O StreamingFlix possui regras relacionadas ao funcionamento dos planos de uma plataforma de streaming.
+
+Atualmente, a aplicação possui três funcionalidades principais:
 
 - Classificação do plano de acordo com a quantidade de telas simultâneas;
-- Cálculo da mensalidade de acordo com o período contratado;
-- Validação do acesso a conteúdo adulto considerando a idade do usuário e o controle parental.
+- Cálculo da mensalidade com desconto conforme o período contratado;
+- Validação do acesso a conteúdo adulto de acordo com a idade e o controle parental.
 
-Além da aplicação, foram desenvolvidos **testes unitários parametrizados** para verificar o funcionamento dessas regras.
+A lógica dessas funcionalidades está concentrada na classe `PlanoStreamingService`.
 
 ---
 
 ## 🛠️ Tecnologias utilizadas
 
-- **Java**
-- **JUnit**
-- **Maven**
+- **C#**
+- **.NET 10**
+- **xUnit 2.9.3**
+- **Microsoft.NET.Test.Sdk**
+- **xUnit Visual Studio Runner**
+- **Coverlet**
 - **Git**
 - **GitHub**
+
+O projeto principal utiliza o framework `Microsoft.NET.Sdk` e tem como alvo o **.NET 10.0**.
+
+O projeto de testes também utiliza .NET 10 e possui dependências do xUnit, Microsoft.NET.Test.Sdk e Coverlet para execução e cobertura dos testes.
 
 ---
 
@@ -35,20 +42,36 @@ Além da aplicação, foram desenvolvidos **testes unitários parametrizados** p
 ```text
 StreamingFlix/
 │
-├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── ...
-│   │
-│   └── test/
-│       └── java/
-│           └── ...
+├── StreamingFlix.App/
+│   ├── PlanoStreamingService.cs
+│   └── StreamingFlix.App.csproj
 │
-├── pom.xml
-├── .gitignore
+├── StreamingFlix.Tests/
+│   ├── [arquivos de testes]
+│   └── StreamingFlix.Tests.csproj
+│
+├── StreamingFlix.slnx
 ├── LICENSE
 └── README.md
 ```
+
+### StreamingFlix.App
+
+Projeto principal da aplicação.
+
+Nele está localizada a classe:
+
+```text
+PlanoStreamingService
+```
+
+Essa classe concentra as regras de negócio relacionadas aos planos do StreamingFlix.
+
+### StreamingFlix.Tests
+
+Projeto responsável pelos testes automatizados da aplicação.
+
+Ele possui uma referência ao projeto `StreamingFlix.App`, permitindo que as classes e métodos da aplicação sejam utilizados durante os testes.
 
 ---
 
@@ -56,20 +79,19 @@ StreamingFlix/
 
 Para executar o projeto, é necessário ter instalado:
 
-- **JDK 17 ou superior**
-- **Maven**
+- **.NET SDK 10.0 ou superior**
 - **Git**
 
-Para verificar a versão do Java instalada:
+Para verificar a versão do .NET instalada:
 
 ```bash
-java -version
+dotnet --version
 ```
 
-Para verificar o Maven:
+O projeto está configurado para utilizar o framework:
 
-```bash
-mvn -version
+```text
+net10.0
 ```
 
 ---
@@ -81,182 +103,273 @@ mvn -version
 No terminal, execute:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/streaming-flix-xunit.git
+git clone https://github.com/dev-Anthonym/streaming-flix-xunit.git
 ```
 
-Depois, entre na pasta do projeto:
+Entre na pasta do projeto:
 
 ```bash
 cd streaming-flix-xunit
 ```
 
-> Substitua `SEU-USUARIO` pelo seu usuário do GitHub.
+---
 
-### 2. Compilar o projeto
+### 2. Restaurar as dependências
 
 Execute:
 
 ```bash
-mvn compile
+dotnet restore
 ```
 
-### 3. Executar os testes
+Esse comando restaura os pacotes necessários para o projeto e para a execução dos testes.
 
-Para executar toda a suíte de testes:
+---
+
+### 3. Compilar a solução
+
+Execute:
 
 ```bash
-mvn test
+dotnet build
 ```
 
-Se todos os testes forem executados corretamente, o Maven apresentará o resultado no terminal.
+Esse comando realiza a compilação dos projetos presentes na solução.
 
 ---
 
-## 🧪 Testes unitários
+## 🧪 Executando os testes
 
-Os testes unitários foram desenvolvidos utilizando **JUnit**, com o objetivo de validar as principais regras de negócio da aplicação.
+Para executar os testes automatizados, utilize:
 
-Foram criados testes para:
+```bash
+dotnet test
+```
 
-- Classificação dos planos;
-- Cálculo da mensalidade com desconto;
-- Validação do acesso a conteúdo adulto.
+O comando executa o projeto `StreamingFlix.Tests` e apresenta no terminal a quantidade de testes executados, aprovados e, caso existam, os testes que apresentaram falhas.
+
+O projeto utiliza **xUnit** como framework de testes. A configuração atual utiliza:
+
+```text
+xunit                    2.9.3
+Microsoft.NET.Test.Sdk   17.14.1
+xunit.runner.visualstudio 3.1.4
+coverlet.collector       6.0.4
+```
+
 
 ---
 
-## 📊 Regras de negócio
+# 📊 Regras de negócio
 
-### 1. Classificação dos planos
+## 1. Classificação do plano
 
-A classificação do plano é determinada pela quantidade de telas simultâneas:
+O método:
 
-| Telas simultâneas | Plano |
+```csharp
+ObterClassificacaoPorQualidade(int telasSimultaneas)
+```
+
+determina a classificação do plano de acordo com a quantidade de telas simultâneas.
+
+A implementação atual possui as seguintes regras:
+
+| Telas simultâneas | Classificação |
 |---:|---|
 | 1 | BÁSICO |
 | 2 | PADRÃO |
 | 4 ou mais | PREMIUM |
+| Outros valores | NÃO DEFINIDO |
 
-Casos de teste:
+A regra está implementada diretamente na classe `PlanoStreamingService`.
+
+### Exemplos
 
 ```text
 1 tela  → BÁSICO
 2 telas → PADRÃO
 4 telas → PREMIUM
+5 telas → PREMIUM
+10 telas → PREMIUM
 ```
 
-Esses são os cenários definidos na atividade.
+Valores que não correspondem às condições acima retornam:
+
+```text
+NÃO DEFINIDO
+```
+
+Por exemplo:
+
+```text
+0 telas → NÃO DEFINIDO
+3 telas → NÃO DEFINIDO
+```
 
 ---
 
-### 2. Cálculo da mensalidade
+## 2. Cálculo da mensalidade com desconto
 
-O valor da mensalidade recebe desconto conforme a quantidade de meses contratados:
+O método:
 
-| Período contratado | Desconto |
+```csharp
+CalcularMensalidadeComDesconto(int valorBase, int mesesContratados)
+```
+
+calcula o valor final da mensalidade considerando o período contratado.
+
+As regras implementadas são:
+
+| Meses contratados | Desconto |
 |---:|---:|
 | Menos de 6 meses | Sem desconto |
 | 6 a 11 meses | 10% |
 | 12 meses ou mais | 20% |
 
-Exemplos:
+
+### Exemplos
+
+Considerando uma mensalidade de `R$ 50,00`:
 
 ```text
-Valor: R$ 50,00
 1 mês  → R$ 50,00
-
-Valor: R$ 50,00
 6 meses → R$ 45,00
-
-Valor: R$ 50,00
 12 meses → R$ 40,00
 ```
 
-Esses cenários são especificados na atividade.
+O cálculo é realizado diretamente sobre o valor informado no parâmetro `valorBase`.
 
 ---
 
-### 3. Validação de acesso a conteúdo adulto
+## 3. Validação de acesso a conteúdo adulto
 
-O acesso ao conteúdo adulto somente deve ser permitido quando o usuário:
+O método:
 
-- Possuir **18 anos ou mais**;
-- Estiver com o **controle parental desativado**.
+```csharp
+PodeAcessarConteudoAdulto(int idade, bool controleParentalAtivo)
+```
 
-Casos de teste:
+verifica se o usuário pode acessar conteúdo adulto.
+
+Para que o acesso seja permitido, as duas condições precisam ser verdadeiras:
+
+1. O usuário deve possuir **18 anos ou mais**;
+2. O controle parental deve estar **desativado**.
+
+A implementação utiliza a seguinte condição:
+
+```csharp
+idade >= 18 && !controleParentalAtivo
+```
+
+
+### Exemplos
 
 | Idade | Controle parental | Resultado |
-|---:|:---:|:---:|
+|---:|:---:|---|
 | 20 | Desativado | ✅ Permitido |
+| 18 | Desativado | ✅ Permitido |
 | 20 | Ativado | ❌ Negado |
 | 16 | Desativado | ❌ Negado |
 
-Esses cenários fazem parte dos casos de teste definidos na atividade.
+---
+
+# 🧪 Testes unitários
+
+O projeto possui um projeto separado chamado `StreamingFlix.Tests`, criado especificamente para os testes da aplicação.
+
+A estrutura utiliza **xUnit** e referencia diretamente o projeto principal:
+
+```text
+StreamingFlix.Tests
+        │
+        └── referência
+                ↓
+        StreamingFlix.App
+```
+
+
+Os testes têm como objetivo verificar se as regras implementadas em `PlanoStreamingService` produzem os resultados esperados para diferentes entradas.
 
 ---
 
-## 🧪 Testes parametrizados
+## 🔬 Testes parametrizados
 
-Os testes podem utilizar os recursos de parametrização disponibilizados pelo **JUnit**, permitindo executar o mesmo teste com diferentes conjuntos de valores.
+A atividade utiliza testes parametrizados para verificar diferentes cenários de uma mesma regra.
 
-Por exemplo, o teste de classificação pode verificar diferentes quantidades de telas:
+Com xUnit, essa abordagem pode ser realizada utilizando recursos como:
 
-```java
-@ParameterizedTest
-@CsvSource({
-    "1, BÁSICO",
-    "2, PADRÃO",
-    "4, PREMIUM"
-})
-void deveClassificarPlanoCorretamente(
-        int telasSimultaneas,
-        String classificacaoEsperada) {
+```csharp
+[Theory]
+[InlineData(...)]
+```
 
-    // teste
+Isso permite executar o mesmo método de teste diversas vezes utilizando diferentes valores de entrada.
+
+Por exemplo:
+
+```csharp
+[Theory]
+[InlineData(1, "BÁSICO")]
+[InlineData(2, "PADRÃO")]
+[InlineData(4, "PREMIUM")]
+public void DeveClassificarPlanoCorretamente(
+    int telasSimultaneas,
+    string resultadoEsperado)
+{
+    // execução do teste
 }
 ```
 
-Essa abordagem permite testar vários cenários sem precisar criar um método de teste separado para cada entrada.
-
-A atividade solicita testes parametrizados para as regras de classificação, desconto e validação de acesso.
+Dessa maneira, uma única estrutura de teste pode validar vários cenários.
 
 ---
 
-## 📈 Cobertura dos testes
+# 📈 Regras contempladas
 
-A suíte de testes contempla as principais regras de negócio:
+A aplicação implementa as seguintes regras:
 
-- ✅ Classificação do plano BÁSICO;
-- ✅ Classificação do plano PADRÃO;
-- ✅ Classificação do plano PREMIUM;
-- ✅ Mensalidade sem desconto;
-- ✅ Desconto de 10%;
-- ✅ Desconto de 20%;
-- ✅ Acesso permitido para maiores de idade sem controle parental;
-- ✅ Bloqueio pelo controle parental;
-- ✅ Bloqueio para menores de idade.
+### Classificação
 
-Para executar todos os testes:
+- ✅ 1 tela → BÁSICO
+- ✅ 2 telas → PADRÃO
+- ✅ 4 ou mais telas → PREMIUM
+- ✅ Valores fora dessas condições → NÃO DEFINIDO
 
-```bash
-mvn test
-```
+### Mensalidade
 
-O objetivo é garantir que todos os cenários definidos sejam executados com sucesso.
+- ✅ Menos de 6 meses → sem desconto
+- ✅ De 6 a 11 meses → 10% de desconto
+- ✅ 12 meses ou mais → 20% de desconto
+
+### Conteúdo adulto
+
+- ✅ 18 anos ou mais + controle parental desativado → acesso permitido
+- ❌ Controle parental ativado → acesso negado
+- ❌ Menor de 18 anos → acesso negado
 
 ---
 
-## 📌 Principais comandos
+# 📦 Comandos principais
 
 | Comando | Descrição |
 |---|---|
-| `mvn compile` | Compila o projeto |
-| `mvn test` | Executa os testes unitários |
-| `java -version` | Verifica a versão do Java |
-| `mvn -version` | Verifica a versão do Maven |
+| `dotnet restore` | Restaura as dependências do projeto |
+| `dotnet build` | Compila a solução |
+| `dotnet test` | Executa os testes automatizados |
+| `dotnet --version` | Exibe a versão instalada do .NET |
 
 ---
 
-## 👥 Contribuidores
+# 📄 Licença
+
+Este projeto está disponibilizado sob a **Licença MIT**.
+
+Consulte o arquivo `LICENSE` presente no repositório para obter o texto completo da licença.
+
+---
+
+# 👥 Contribuidores
 
 Projeto desenvolvido para fins acadêmicos na disciplina de **Garantia da Qualidade de Software / Gestão e Qualidade de Software**.
 
@@ -267,12 +380,6 @@ Projeto desenvolvido para fins acadêmicos na disciplina de **Garantia da Qualid
 
 ---
 
-## 📄 Licença
+## 🔗 Repositório
 
-Este projeto está disponibilizado sob a licença **MIT**.
-
----
-
-## 📄 Licença
-
-Este projeto está disponibilizado sob a licença **MIT**.
+[StreamingFlix — GitHub](https://github.com/dev-Anthonym/streaming-flix-xunit)
