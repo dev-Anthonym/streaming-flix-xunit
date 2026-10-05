@@ -47,7 +47,7 @@ StreamingFlix/
 │   └── StreamingFlix.App.csproj
 │
 ├── StreamingFlix.Tests/
-│   ├── [arquivos de testes]
+│   ├── PlanoStreamingServiceTests.cs
 │   └── StreamingFlix.Tests.csproj
 │
 ├── StreamingFlix.slnx
